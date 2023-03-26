@@ -28,22 +28,21 @@ class _FormScreenState extends State<FormScreen> {
     predValue = "";
   }
 
-Future<void> predData() async {
-  final interpreter = await Interpreter.fromAsset('diabetes_model.tflite');
-  var input = formData.toString();
-  var output = List.filled(1, 0).reshape([1, 1]);
-  interpreter.run(input, output);
-  print(output[0][0]);
+  Future<void> predData() async {
+    final interpreter = await Interpreter.fromAsset('diabetes_model.tflite');
+    var input = formData.toString();
+    var output = List.filled(1, 0).reshape([1, 1]);
+    interpreter.run(input, output);
+    print(output[0][0]);
 
-  setState(() {
-    if (output[0][0] >= 0.5) {
-      predValue = "Diabetic";
-    } else {
-      predValue = "Not Diabetic";
-    }
-  });
-}
-
+    setState(() {
+      if (output[0][0] >= 0.5) {
+        predValue = "Diabetic";
+      } else {
+        predValue = "Not Diabetic";
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
