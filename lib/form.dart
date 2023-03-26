@@ -25,7 +25,7 @@ class _FormScreenState extends State<FormScreen> {
   @override
   void initState() {
     super.initState();
-    predValue = "click get results button";
+    predValue = "";
   }
 
 Future<void> predData() async {
@@ -443,7 +443,7 @@ Future<void> predData() async {
                       ),
                     ),
                     Text(
-                      "Predicted value :  $predValue ",
+                      "$predValue ",
                       style: TextStyle(color: Colors.red, fontSize: 23),
                     ),
                     SizedBox(
